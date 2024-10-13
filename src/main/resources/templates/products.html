@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Заміни на свій CSS файл -->
+</head>
+<body>
+<h1>Products</h1>
+
+<h2>Add Product</h2>
+<form action="/products/add" method="post">
+  <input type="text" name="name" placeholder="Product Name" required>
+  <input type="text" name="photo" placeholder="Product Photo URL" required>
+  <input type="number" name="price" step="0.01" placeholder="Price" required>
+  <select name="category" required>
+    <option value="" disabled selected>Select Category</option>
+    <th:block th:each="category : ${categories}">
+      <option th:value="${category.id}" th:text="${category.name}"></option>
+    </th:block>
+  </select>
+  <button type="submit">Add Product</button>
+</form>
+
+<h2>Product List</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Price</th>
+    <th>Category</th>
+  </tr>
+  </thead>
+  <tbody>
+  <th:block th:each="product : ${products}">
+    <tr>
+      <td th:text="${product.id}"></td>
+      <td th:text="${product.name}"></td>
+      <td><img th:src="${product.photo}" alt="Product image" width="100"></td>
+      <td th:text="${product.price}"></td>
+      <td th:text="${product.category.name}"></td>
+    </tr>
+  </th:block>
+  </tbody>
+</table>
+
+<h2>Filter Products</h2>
+<form action="/products/filter" method="get">
+  <input type="number" name="minPrice" step="0.01" placeholder="Min Price" required>
+  <input type="number" name="maxPrice" step="0.01" placeholder="Max Price" required>
+  <button type="submit">Filter</button>
+</form>
+
+<h2>Categories</h2>
+<a href="/categories">View Categories</a>
+</body>
+</html>
