@@ -8,9 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+
     List<Product> findByCategory(Category category);
 
     Page<Product> findAll(Pageable pageable);
 
-    List<Product> findByPriceBetween(Double minPrice, Double maxPrice);
+    Page<Product> findByPriceBetweenAndNameContainingIgnoreCase(Double minPrice, Double maxPrice,
+            String name, Pageable pageable);
 }
