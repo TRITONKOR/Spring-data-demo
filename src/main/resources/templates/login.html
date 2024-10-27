@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід</title>
+</head>
+<body>
+<h1>Вхід</h1>
+<form th:action="@{/login}" method="post">
+  <label for="username">Ім'я користувача:</label>
+  <input type="text" id="username" name="username" required>
+  <br>
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <button type="submit">Увійти</button>
+</form>
+<a href="/register">Ще немає акаунту? Зареєструватися</a>
+
+<h2>Або увійдіть через соціальні мережі:</h2>
+<a href="/oauth2/authorization/google">Увійти через Google</a><br>
+<a href="/oauth2/authorization/facebook">Увійти через Facebook</a>
+</body>
+</html>

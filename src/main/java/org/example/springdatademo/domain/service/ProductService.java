@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.example.springdatademo.persistence.entity.Category;
 import org.example.springdatademo.persistence.entity.Product;
 import org.example.springdatademo.persistence.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

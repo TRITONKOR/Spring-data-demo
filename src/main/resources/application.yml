@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: Spring-data-demo
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_GOOGLE_CLIENT_ID
+            client-secret: YOUR_GOOGLE_CLIENT_SECRET
+            scope: profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+            client-name: Google
+          facebook:
+            client-id: YOUR_FACEBOOK_CLIENT_ID
+            client-secret: YOUR_FACEBOOK_CLIENT_SECRET
+            scope: public_profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/facebook"
+            client-name: Facebook
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: postgres
+    password: sigma
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
